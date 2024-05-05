@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    background: url("./images/playinggame.png") no-repeat center;
+    background-size: cover;
+    width: 100vw;
+    height: 110vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    max-width: 300px;
+    width: 50%;
+    height: 15%;
+    border-radius: 10px;
+    top: 2%;
+    transform: translatex(-25%);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropbtn {
+    margin-top: 80%;
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px 20px 0px 0px;
+    cursor: pointer;
+}
+
+.dropbtn span{
+    font-size: large;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.player-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-container input[type="text"] {
+    margin-right: 10px; 
+    border-radius: 7px;
+}
+
+.input-container input[type="color"] {
+    width: 30px;
+    border-radius: 7px;
+}
+
+.start {
+    position: absolute;
+    left: 45%;
+    bottom: 5%;
+}
+
+.start button {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+@media (max-width: 400px) {
+    .logo {
+        transform: translatex(-10%);
+    }
+    .start {
+        left: 40%;
+    }
+    .dropbtn{
+        margin-top: 95%;
+    }
+}

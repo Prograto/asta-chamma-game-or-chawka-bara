@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="menu.css">
+</head>
+<body style="background-color:white;">
+<img class="logo" src="./images/Ashta-chamma-logo.png" alt="">
+<div class="dropdown">
+  <button class="dropbtn" onclick="toggleDropdown()">Select players <span>&#x2B07;</span></button>
+  <div class="dropdown-content" id="dropdownContent">
+    <a href="#" onclick="createInput(2)">VS 2</a>
+    <a href="#" onclick="createInput(3)">VS 3</a>
+    <a href="#" onclick="createInput(4)">VS 4</a>
+  </div>
+</div>
+<div class="start"><button onclick="printPlayerDetails()">Start</button></div>
+<script src="menu.js"></script>
+
+</body>
+</html>
