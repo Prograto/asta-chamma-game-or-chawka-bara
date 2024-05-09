@@ -219,6 +219,36 @@ function addClickListenerToPieces(pieces) {
     listenersAdded[currentPlayer] = true;
 }
 
+let animate;
+let moveSound = new Audio('./audio/pieceMovement.mp3');
+let pieceout = new Audio('./audio/pieceout.mp3');
+moveSound.preload = 'auto';
+pieceout.preload = 'auto';
+let piecewin = new Audio('./audio/piecewin.mp3');
+let playerwin = new Audio('./audio/playerwin.mp3');
+piecewin.preload = 'auto';
+playerwin.preload = 'auto';
+
+function animatePieceMovement(piece, path, startIndex, endIndex) {
+    
+    let currentIndex = startIndex;
+    animate = true;
+    const movePieceStep = () => {
+        if (currentIndex < endIndex) {
+            const nextSquare = document.querySelector(`.square${path[currentIndex + 1]}`);
+            nextSquare.appendChild(piece); 
+            moveSound.play();
+            currentIndex++;
+            setTimeout(movePieceStep, 300);
+        }
+        else{
+            animate = false;
+        }
+    };
+    if(animate)
+        movePieceStep(); // Start the animation
+}
+
 //piece movement logic
 function movePiece(piece) {
     steps = parseInt(displayDiv.textContent);
@@ -256,6 +286,8 @@ function movePiece(piece) {
             console.log('Piece cannot move beyond the board end.'); // Notify user or handle accordingly
             return; // Prevent moving beyond the path
         }
+        if(newIndex==24)
+            piecewin.play();
         if (newIndex >= 0 && newIndex < piecePath.length) {
             let newSquareNum = piecePath[newIndex];
             const newSquare = document.querySelector(`.square${newSquareNum}`);
@@ -271,8 +303,7 @@ function movePiece(piece) {
                         });
                     }
                 }
-
-                newSquare.appendChild(piece);
+                animatePieceMovement(piece, piecePath, currentIndex, newIndex);
                 piece.setAttribute('data-moved', 'true');
                 move = false;
                 manrelease[currentPlayer - 1] = false;
@@ -297,6 +328,7 @@ function sendPieceHome(opponentPiece) {
     
     if (opponentStartingSquare) {
         clickPiece = true;
+        pieceout.play();
         opponentStartingSquare.appendChild(opponentPiece);
         releasedPiecesCount[opponentPlayerIndex-1]--;
     } else {
@@ -336,6 +368,7 @@ function releasePiece(player) {
                 const piece = playerPieces[i];
                 const releaseSquare = document.querySelector(`.square${playerReleaseArr[currentPlayer-1]}`);
                 releaseSquare.appendChild(piece);
+                moveSound.play();
                 releasedPiecesCount[currentPlayer-1]++; 
                 autorelease[currentPlayer-1] = false;
                 move = false;
