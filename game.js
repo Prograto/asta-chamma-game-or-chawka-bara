@@ -468,6 +468,7 @@ function checkWinCondition(player) {
         gamewonstate[player] = true;
         wonTrueCount += 1;
         checkGameOver();
+        playerwin.play();
         // Removing three pieces as a symbol of winning
         for (let i = 0; i < 3; i++) {
             if (piecesOnWinSquare[i]) {
