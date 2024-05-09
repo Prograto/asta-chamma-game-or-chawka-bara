@@ -220,5 +220,10 @@ body {
 #new-game-btn:hover{
     color: #ff9900;
 }
+.instruction{
+    position: absolute;
+    bottom: 0%;
+    color: #ef9309;
+}
 
 
