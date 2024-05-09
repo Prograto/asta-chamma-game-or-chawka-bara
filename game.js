@@ -286,8 +286,10 @@ function movePiece(piece) {
             console.log('Piece cannot move beyond the board end.'); // Notify user or handle accordingly
             return; // Prevent moving beyond the path
         }
-        if(newIndex==24)
+        if(newIndex==24){
             piecewin.play();
+            releasedPiecesCount[opponentPlayerIndex-1]--;
+        }
         if (newIndex >= 0 && newIndex < piecePath.length) {
             let newSquareNum = piecePath[newIndex];
             const newSquare = document.querySelector(`.square${newSquareNum}`);
