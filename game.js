@@ -288,7 +288,6 @@ function movePiece(piece) {
         }
         if(newIndex==24){
             piecewin.play();
-            releasedPiecesCount[opponentPlayerIndex-1]--;
         }
         if (newIndex >= 0 && newIndex < piecePath.length) {
             let newSquareNum = piecePath[newIndex];
