@@ -310,7 +310,7 @@ function movePiece(piece) {
                 manrelease[currentPlayer - 1] = false;
                 clickPiece = true;
                 if (newSquareNum === winsquare) {
-                    checkWinCondition(currentPlayer);
+                    checkWinCondition(currentPlayer,steps);
                 }
             } else {
                 console.error("New square not found.");
@@ -462,9 +462,9 @@ function animateRolling(clickPiece) {
 }
 
 let wonTrueCount = 0;
-function checkWinCondition(player) {
+function checkWinCondition(player,steps) {
     const piecesOnWinSquare = document.querySelectorAll(`.square${winsquare} .player${player}-piece`);
-    if (piecesOnWinSquare.length === 4) {
+    if ((piecesOnWinSquare.length == 3 && steps!=1) || piecesOnWinSquare.length == 4) {
         console.log(`Player ${player} has won!`);
         gamewonstate[player] = true;
         wonTrueCount += 1;
@@ -530,5 +530,4 @@ rollButton.addEventListener('click', rollDice);
 document.getElementById('exit-icon').addEventListener('click', function() {
     window.location.href = 'index.html';
 });
-
 
